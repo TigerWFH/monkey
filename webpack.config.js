@@ -16,7 +16,6 @@ if (env === 'production'){
   buildPath = path.join(__dirname, 'static');
   prdConfig = {
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
