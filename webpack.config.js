@@ -145,10 +145,10 @@ config = {
     new HtmlWebpackPlugin({
       title: 'monkey的小屋',
       template: 'app/index.html'
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerPort: 8889
     })
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 8889
+    // })
   ]
 }
 
