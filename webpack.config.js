@@ -21,6 +21,9 @@ if (env === 'production'){
           warnings: false
         }
       }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor'
+      }),
       new webpack.ProvidePlugin({
 
       }),
@@ -39,14 +42,15 @@ if (env === 'production'){
       }),
       new HtmlWebpackPlugin({
         title: 'monkey demos',
-        template: 'src/index.html'
+        template: path.join(srcPath, '/index.html')
       })
     ],
   }
 }
 config = {
   entry: {
-    index: path.join(__dirname, 'app/index.jsx')
+    index: path.join(__dirname, 'app/index.jsx'),
+    vendor: ['react', 'react-dom', 'react-redux', 'redux', 'react-router']
   },
   output: {
     filename: '[name].js',
@@ -127,6 +131,9 @@ config = {
     new webpack.ProvidePlugin({
 
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.ENV': {
@@ -143,7 +150,7 @@ config = {
     }),
     new HtmlWebpackPlugin({
       title: 'monkey的小屋',
-      template: 'app/index.html'
+      template: path.join(srcPath, '/index.html')
     })
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 8889
