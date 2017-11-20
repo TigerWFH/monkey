@@ -141,10 +141,10 @@ config = {
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.HashedModuleIdsPlugin(),/*解决vendor hash变化问题*/
-    new webpack.optimize.CommonsChunkPlugin({
+    new webpack.optimize.CommonsChunkPlugin({/*抽出公共模块*/
       name: 'vendor',
     }),
-    new webpack.optimize.CommonsChunkPlugin({
+    new webpack.optimize.CommonsChunkPlugin({/*抽出公共模块vendor中的webpack运行环境成为单独模块manifest*/
       name: 'manifest',
       chunks: ['vendor']
     }),
@@ -155,15 +155,15 @@ config = {
         'ENV': JSON.stringify(env)
       }
     }),
-    new ExtractTextWebpackPlugin({
+    new ExtractTextWebpackPlugin({/*抽取css文件，并使用css文件自身生成hash*/
       filename: 'index.[contenthash].css'
     }),
-    new CleanWebpackPlugin('dist', {
+    new CleanWebpackPlugin('dist', {/*删除指定目录*/
       root: __dirname,
       verbose: true,
       dry: false
     }),
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({/*根据模板生成对应html文件*/
       title: 'monkey的小屋',
       template: path.join(srcPath, '/index.html'),
       hash: false
