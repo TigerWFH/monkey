@@ -53,8 +53,8 @@ config = {
     vendor: ['react', 'react-dom', 'react-redux', 'redux', 'react-router']
   },
   output: {
-    filename: '[name].js',
-    chunkFilename: 'modules/[id].[name].chunk.js',
+    filename: '[name].[hash:8].js',
+    chunkFilename: 'modules/[id].[name].[hash:8].chunk.js',
     path: buildPath
   },
   module: {
