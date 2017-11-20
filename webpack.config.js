@@ -21,6 +21,7 @@ if (env === 'production'){
           warnings: false
         }
       }),
+
       new webpack.HashedModuleIdsPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor'
@@ -30,7 +31,6 @@ if (env === 'production'){
         chunks: ['vendor']
       }),
       new webpack.ProvidePlugin({
-
       }),
       new webpack.DefinePlugin({
         'process.ENV': {
@@ -50,8 +50,10 @@ if (env === 'production'){
         template: path.join(srcPath, '/index.html')
       })
     ],
+    devServer: {}
   }
 }
+
 config = {
   entry: {
     vendor: ['react', 'react-dom', 'react-redux', 'redux', 'react-router'],
@@ -133,9 +135,11 @@ config = {
     }
   },
   plugins: [
-    new webpack.ProvidePlugin({
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 8889
+    // }),
+    new webpack.HotModuleReplacementPlugin(),
 
-    }),
     new webpack.HashedModuleIdsPlugin(),/*解决vendor hash变化问题*/
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -144,8 +148,9 @@ config = {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
+    new webpack.ProvidePlugin({/*不必通过 import/require 使用模块*/
+    }),
+    new webpack.DefinePlugin({/*允许在编译时(compile time)配置的全局常量*/
       'process.ENV': {
         'ENV': JSON.stringify(env)
       }
@@ -160,11 +165,9 @@ config = {
     }),
     new HtmlWebpackPlugin({
       title: 'monkey的小屋',
-      template: path.join(srcPath, '/index.html')
+      template: path.join(srcPath, '/index.html'),
+      hash: false
     })
-    // new BundleAnalyzerPlugin({
-    //   analyzerPort: 8889
-    // })
   ]
 }
 
