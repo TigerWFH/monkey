@@ -138,7 +138,7 @@ config = {
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 8889
     // }),
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
 
     new webpack.HashedModuleIdsPlugin(),/*解决vendor hash变化问题*/
     new webpack.optimize.CommonsChunkPlugin({/*抽出公共模块*/
