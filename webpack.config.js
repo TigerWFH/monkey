@@ -166,7 +166,7 @@ config = {
     new HtmlWebpackPlugin({/*根据模板生成对应html文件*/
       title: 'monkey的小屋',
       template: path.join(srcPath, '/index.html'),
-      hash: false
+      favicon: path.join(__dirname, '/app/common/res/images/favicon.ico')
     })
   ]
 }
