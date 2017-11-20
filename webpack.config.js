@@ -21,8 +21,13 @@ if (env === 'production'){
           warnings: false
         }
       }),
+      new webpack.HashedModuleIdsPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor'
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest',
+        chunks: ['vendor']
       }),
       new webpack.ProvidePlugin({
 
@@ -49,12 +54,12 @@ if (env === 'production'){
 }
 config = {
   entry: {
-    index: path.join(__dirname, 'app/index.jsx'),
-    vendor: ['react', 'react-dom', 'react-redux', 'redux', 'react-router']
+    vendor: ['react', 'react-dom', 'react-redux', 'redux', 'react-router'],
+    index: path.join(__dirname, 'app/index.jsx')
   },
   output: {
-    filename: '[name].[hash:8].js',
-    chunkFilename: 'modules/[id].[name].[hash:8].chunk.js',
+    filename: '[name].[chunkhash].js',/*不同的插件使用不同的hash命名方式*/
+    chunkFilename: 'modules/[name].[chunkhash].chunk.js',
     path: buildPath
   },
   module: {
@@ -131,8 +136,13 @@ config = {
     new webpack.ProvidePlugin({
 
     }),
+    new webpack.HashedModuleIdsPlugin(),/*解决vendor hash变化问题*/
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+      name: 'vendor',
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      chunks: ['vendor']
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
