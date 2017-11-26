@@ -35,6 +35,11 @@ const AsyncHome = Loadable({
   loading: MyLoadingComponent
 });
 
+const AsyncSetting = Loadable({
+  loader: ()=>import('./pages/setting'/* webpackChunkName:"setting" */),
+  loading: MyLoadingComponent
+});
+
 function App(props) {
   return (
     <div className={css["app"]}>
@@ -47,6 +52,7 @@ let elem = <Provider store={store} >
 <Router>
   <Switch>
       <Route path='/' exact component={AsyncHome} />
+      <Route path='/setting' exact component={AsyncSetting} />
   </Switch>
   </Router>
 </Provider >

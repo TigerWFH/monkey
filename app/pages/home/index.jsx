@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getMockData} from './action';
 
@@ -11,7 +12,11 @@ class Home extends React.Component{
     componentDidMount(){
         let {getMockData} = this.props;
         getMockData();
+        console.log('llll****--->', this.context.router);
     }
+    static contextTypes = {
+        router: PropTypes.object
+    };
 
     render(){
         return (
