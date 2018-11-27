@@ -40,6 +40,8 @@ export class Home extends React.Component {
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log("prevProps==>", prevProps);
+
+        return {}
     }
 
     render() {
