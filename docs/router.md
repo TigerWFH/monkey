@@ -1,0 +1,10 @@
+* MemoryRouter
+* Prompt：页面切换时的提示
+* Redirect：路由的重定向，直接用在Route的组件属性中
+* Route
+* Router
+* StaticRouter
+* Switch：只渲染所匹配到的第一个路由组件
+* matchPath()
+* generatePath()
+* withRouter()
