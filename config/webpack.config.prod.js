@@ -114,10 +114,7 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the app code.
-  entry: {
-    vendor: [require.resolve('react-dev-utils/webpackHotDevClient'), 'react', 'react-dom', 'react-router', 'redux', 'react-redux', 'redux-thunk'],
-    main: paths.appIndexJs,
-  },
+  entry: [paths.appIndexJs],
   output: {
     // The build folder.
     path: paths.appBuild,
