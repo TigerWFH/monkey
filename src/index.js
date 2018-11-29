@@ -8,8 +8,8 @@ import store from './store';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 // pages
-import Home from './pages/home';
-import Demo from './pages/demo';
+// import Home from './pages/home';
+// import Demo from './pages/demo';
 
 const Loading = function(props) {
     return null;
@@ -31,7 +31,7 @@ const router = (
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path='/' exact component={Home}></Route>
+                {/* <Route path='/' exact component={Home}></Route> */}
                 <Route path='/home' exact component={asyncHome}></Route>
                 <Route path='/demo' exact component={asyncDemo}></Route>
             </Switch>
