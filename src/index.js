@@ -9,11 +9,20 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 // pages
 import Home from './pages/home';
+import Demo from './pages/demo';
+
 const Loading = function(props) {
     return null;
 }
+
+const asyncDemo = Loadable({
+    loader: () => import(/* webpackChunkName: "demo" */ './pages/demo'),
+    loading: Loading,
+    delay: 300
+});
+
 const asyncHome = Loadable({
-    loader: () => import('./pages/home' /* webpackChunkName: "home"*/),
+    loader: () => import(/* webpackChunkName: "home" */ './pages/home'),
     loading: Loading,
     delay: 300
 });
@@ -22,8 +31,9 @@ const router = (
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path='/' component={Home}></Route>
-                <Route path='/home' component={asyncHome}></Route>
+                <Route path='/' exact component={Home}></Route>
+                <Route path='/home' exact component={asyncHome}></Route>
+                <Route path='/demo' exact component={asyncDemo}></Route>
             </Switch>
         </Router>
     </Provider>

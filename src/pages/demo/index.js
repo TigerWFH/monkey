@@ -1,0 +1,13 @@
+import * as React from 'react';
+
+export class Demo extends React.Component {
+    render() {
+        return (
+            <div>
+                Demo
+            </div>
+        )
+    }
+}
+
+export default Demo;
