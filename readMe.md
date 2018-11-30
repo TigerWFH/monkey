@@ -6,3 +6,14 @@
 
 
 * 本项目使用react官方脚手架创建
+
+* 统一使用签名
+
+```
+/**
+ * @name:      
+ * @author:     Monkey
+ * @email:      334080374@qq.com
+ * @date:       
+ */
+```
