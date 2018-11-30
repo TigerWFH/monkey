@@ -12,21 +12,27 @@ import styles from './index.module.scss';
 
 const TEXT = '数据加载中...';
 
+/**
+ * property
+ *      rootClass string 容器样式
+ */
+
 function Loading(props) {
     return (
-        <div className={styles.root} onClick={Loading.unmount}>
+        <div className={`${styles.root} ${props.rootClass}`}
+            onClick={Loading.unmount}>
             {props.content || TEXT}
         </div>
     )
 }
 
-Loading.mount = function(options) {
+Loading.mount = function (options) {
     let _instance = getInstance(options);
 
     return _instance
 };
 
-Loading.unmount = function() {
+Loading.unmount = function () {
     ReactDOM.unmountComponentAtNode(container);
     instance = null;
 }

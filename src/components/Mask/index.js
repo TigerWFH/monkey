@@ -10,7 +10,10 @@ import * as ReactDOM from 'react-dom';
 import styles from './index.module.scss';
 
 let instance = null;
-
+/**
+ * property
+ *      rootClass string 容器样式
+ */
 class Mask extends React.Component {
     static show(options) {
         instance.show(options);
@@ -23,7 +26,7 @@ class Mask extends React.Component {
     constructor(props) {
         super(props);
         this.container = document.createElement('div');
-        this.container.className = styles.root;
+        this.container.className = `${styles.root} ${props.rootClass}`;
         this.container.onclick = this.hide;
         document.body.appendChild(this.container);
         this.state = {
@@ -61,12 +64,16 @@ class Mask extends React.Component {
     // }
 }
 
+/**
+ * property
+ *      rootClass string 容器样式
+ */
 export class MultipleMask extends React.Component {
 
     constructor(props) {
         super(props);
         this.container = document.createElement('div');
-        this.container.className = styles.root;
+        this.container.className = `${styles.root} ${props.rootClass}`;
         this.container.onclick = this.hide;
         document.body.appendChild(this.container);
         this.state = {
