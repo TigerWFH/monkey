@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import styles from './index.scss';
+import styles from './index.module.scss';
 
 function Loading(props) {
     return (
@@ -37,3 +37,5 @@ function getInstance(options) {
 
     return instance;
 }
+
+export default Loading;
