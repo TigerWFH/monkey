@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Loading from '../../components/Loading';
-import Mask from '../../components/Mask';
+import Mask, { MultipleMask } from '../../components/Mask';
 
 export class Demo extends React.Component {
 
     onLoad = () => {
         Loading.mount();
         setTimeout(() => {
-            Loading.mount({content: '2s后调用'});
+            Loading.mount({ content: '2s后调用' });
         }, 2000);
     }
 
@@ -27,6 +27,22 @@ export class Demo extends React.Component {
         }, 2000);
     }
 
+    onMultipleMask = () => {
+        const options = {
+            isShow: true,
+            content: 'monkey的小屋'
+        }
+        this.mMask.show(options);
+    }
+
+    onMultipleMask2 = () => {
+        const options = {
+            isShow: true,
+            content: '2222222monkey的小屋'
+        }
+        this.mMask.show(options);
+    }
+
     render() {
         return (
             <div>
@@ -37,6 +53,14 @@ export class Demo extends React.Component {
                 <button onClick={this.onMask}>
                     Mask
                 </button>
+                <button onClick={this.onMultipleMask}>
+                    MultipleMask
+                </button>
+                <button onClick={this.onMultipleMask2}>
+                    MultipleMask2
+                </button>
+                <MultipleMask ref={mask => this.mMask = mask} />
+                <MultipleMask ref={mask => this.mMask2 = mask} />
             </div>
         )
     }
