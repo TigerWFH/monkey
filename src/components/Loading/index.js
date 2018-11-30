@@ -3,10 +3,12 @@ import * as ReactDOM from 'react-dom';
 
 import styles from './index.module.scss';
 
+const TEXT = '数据加载中...';
+
 function Loading(props) {
     return (
         <div className={styles.root}>
-            {props.content || '数据加载中...'}
+            {props.content || TEXT}
         </div>
     )
 }
