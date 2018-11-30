@@ -14,7 +14,7 @@ const TEXT = '数据加载中...';
 
 function Loading(props) {
     return (
-        <div className={styles.root}>
+        <div className={styles.root} onClick={Loading.unmount}>
             {props.content || TEXT}
         </div>
     )
