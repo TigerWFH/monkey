@@ -4,14 +4,14 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import store from './store';
-
+import Mask from './components/Mask';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 // pages
 // import Home from './pages/home';
 // import Demo from './pages/demo';
 
-const Loading = function(props) {
+const Loading = function (props) {
     return null;
 }
 
@@ -29,6 +29,9 @@ const asyncHome = Loadable({
 
 const router = (
     <Provider store={store}>
+    <div>
+    <Mask />
+
         <Router>
             <Switch>
                 {/* <Route path='/' exact component={Home}></Route> */}
@@ -36,6 +39,8 @@ const router = (
                 <Route path='/demo' exact component={asyncDemo}></Route>
             </Switch>
         </Router>
+    </div>
+
     </Provider>
 )
 

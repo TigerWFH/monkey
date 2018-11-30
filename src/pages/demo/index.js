@@ -1,12 +1,6 @@
-/**
- * @name:    Loading  
- * @author:  Monkey
- * @email:   334080374@qq.com
- * @date:    2018-11-30
- * @other: 单例模式，同一时刻仅会出现一个弹框，后续操作覆盖已有操作    
- */
 import * as React from 'react';
 import Loading from '../../components/Loading';
+import Mask from '../../components/Mask';
 
 export class Demo extends React.Component {
 
@@ -16,12 +10,32 @@ export class Demo extends React.Component {
             Loading.mount({content: '2s后调用'});
         }, 2000);
     }
+
+    onMask = () => {
+        const options = {
+            isShow: true,
+            content: 'monkey的小屋'
+        }
+        Mask.show(options);
+
+        setTimeout(() => {
+            const options = {
+                isShow: true,
+                content: '2s后的monkey的小屋'
+            }
+            Mask.show(options);
+        }, 2000);
+    }
+
     render() {
         return (
             <div>
                 Demo
                 <button onClick={this.onLoad}>
                     Loading
+                </button>
+                <button onClick={this.onMask}>
+                    Mask
                 </button>
             </div>
         )
