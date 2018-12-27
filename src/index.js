@@ -29,18 +29,16 @@ const asyncHome = Loadable({
 
 const router = (
     <Provider store={store}>
-    <div>
-    <Mask />
-
-        <Router>
-            <Switch>
-                {/* <Route path='/' exact component={Home}></Route> */}
-                <Route path='/home' exact component={asyncHome}></Route>
-                <Route path='/demo' exact component={asyncDemo}></Route>
-            </Switch>
-        </Router>
-    </div>
-
+        <div>
+            <Mask />
+            <Router>
+                <Switch>
+                    {/* <Route path='/' exact component={Home}></Route> */}
+                    <Route path='/home' exact component={asyncHome}></Route>
+                    <Route path='/demo' exact component={asyncDemo}></Route>
+                </Switch>
+            </Router>
+        </div>
     </Provider>
 )
 
