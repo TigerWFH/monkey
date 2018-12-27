@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import store from './store';
 import Mask from './components/Mask';
@@ -27,24 +27,17 @@ const asyncHome = Loadable({
     delay: 300
 });
 
-function App(props) {
-    return (
-        <Router>
-            <Switch>
-            <Route path='/' exact component={asyncHome}></Route>
-            <Route path='/home' exact component={asyncHome}></Route>
-            <Route path='/demo' exact component={asyncDemo}></Route>
-            <Redirect to='/' />
-            </Switch>
-        </Router>
-    );
-}
-
 const router = (
     <Provider store={store}>
         <div>
             <Mask />
-            <App />
+            <Router>
+                <Switch>
+                    {/* <Route path='/' exact component={Home}></Route> */}
+                    <Route path='/home' exact component={asyncHome}></Route>
+                    <Route path='/demo' exact component={asyncDemo}></Route>
+                </Switch>
+            </Router>
         </div>
     </Provider>
 )
